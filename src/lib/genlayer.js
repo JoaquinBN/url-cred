@@ -31,7 +31,7 @@ class GenLayerService {
   async initialize() {
     try {
       // Get contract address from environment
-      this.contractAddress = process.env.BUN_PUBLIC_CONTRACT_ADDRESS;
+      this.contractAddress = import.meta.env?.BUN_PUBLIC_CONTRACT_ADDRESS;
       if (!this.contractAddress) {
         throw new Error('CONTRACT_ADDRESS environment variable is required');
       }
