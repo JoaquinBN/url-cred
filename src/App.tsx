@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { AllVerificationsPage } from "./pages/AllVerificationsPage";
 import { genLayerService } from "@/lib/genlayer.js";
+import faviconUrl from "./favicon.ico";
+import genlayerUrl from "./genlayer.svg";
 import "./index.css";
 
 export function App() {
@@ -48,7 +50,7 @@ export function App() {
             <div className="flex items-center justify-between w-full max-w-6xl mx-auto">
               <div className="flex items-center gap-3">
                 <Link to="/" className="hover:opacity-80 transition-opacity flex items-center gap-2">
-                  <img src="./favicon.ico" alt="WebCred" className="w-5 h-5" />
+                  <img src={faviconUrl} alt="WebCred" className="w-5 h-5" />
                   <h1 className="text-xl font-bold tracking-tight">WebCred</h1>
                 </Link>
                 <span className="text-sm text-muted-foreground flex items-center gap-1">
@@ -59,7 +61,7 @@ export function App() {
                     rel="noopener noreferrer"
                     className="hover:underline font-medium flex items-center gap-1"
                   >
-                    <img src="./genlayer.svg" alt="GenLayer" className="w-3 h-3 invert" />
+                    <img src={genlayerUrl} alt="GenLayer" className="w-3 h-3 invert" />
                     GenLayer
                   </a>
                 </span>

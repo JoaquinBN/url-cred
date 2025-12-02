@@ -1,5 +1,5 @@
 import { createClient, createAccount } from 'genlayer-js';
-import { genlayerStudio } from './chain-config';
+import { genlayerStudio, CONTRACT_ADDRESS } from './chain-config';
 
 /**
  * @typedef {Object} VerificationResult
@@ -31,7 +31,7 @@ class GenLayerService {
   async initialize() {
     try {
       // Get contract address from environment
-      this.contractAddress = import.meta.env?.BUN_PUBLIC_CONTRACT_ADDRESS;
+      this.contractAddress = CONTRACT_ADDRESS;
       if (!this.contractAddress) {
         throw new Error('CONTRACT_ADDRESS environment variable is required');
       }

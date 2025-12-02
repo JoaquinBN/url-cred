@@ -8,6 +8,7 @@ const CHAIN_ID = import.meta.env?.BUN_PUBLIC_GENLAYER_CHAIN_ID;
 const CHAIN_NAME = import.meta.env?.BUN_PUBLIC_GENLAYER_CHAIN_NAME;
 const RPC_URL = import.meta.env?.BUN_PUBLIC_GENLAYER_RPC_URL;
 const SYMBOL = import.meta.env?.BUN_PUBLIC_GENLAYER_SYMBOL;
+export const CONTRACT_ADDRESS = import.meta.env?.BUN_PUBLIC_CONTRACT_ADDRESS;
 
 export const genlayerStudio = {
   ...studionet,
