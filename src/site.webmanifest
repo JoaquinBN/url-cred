@@ -1,0 +1,16 @@
+{
+  "name": "WebCred",
+  "short_name": "URL Verifier for Intelligent Oracles",
+  "description": "Check if a URL is accessible, stable, and ready to be used by GenLayer Intelligent Oracles.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#9B6AF6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
