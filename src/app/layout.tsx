@@ -27,10 +27,10 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${inter.variable} font-sans antialiased`}>
                 <GenLayerInit>
-                    <div className="min-h-screen flex flex-col bg-background text-foreground">
-                        <header className="border-b bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50">
-                            <div className="container mx-auto">
-                                <div className="flex items-center justify-between p-4">
+                    <div className="min-h-screen bg-background text-foreground">
+                        <header className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50">
+                            <div className="w-full">
+                                <div className="flex items-center justify-between py-4 pl-6 pr-4">
                                     <div className="flex items-center space-x-8">
                                         <Link href="/" className="flex items-center space-x-2">
                                             <img src="/favicon.ico" alt="WebCred" className="w-5 h-5" />
@@ -54,7 +54,7 @@ export default function RootLayout({
                         </header>
 
                         {/* Main Content */}
-                        <main className="flex-1">
+                        <main className="pt-20">
                             <div className="container mx-auto p-4 md:p-8">
                                 <div className="max-w-6xl mx-auto">
                                     {children}
