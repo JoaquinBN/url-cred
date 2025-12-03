@@ -1,34 +1,49 @@
-# dependencies (bun install)
+# dependencies
 node_modules
 
-# output
+# Next.js
+.next
 out
-dist
-*.tgz
 
-# code coverage
+# production
+dist
+build
+
+# testing
 coverage
 *.lcov
 
-# logs
-logs
-_.log
-report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
+# misc
+.DS_Store
+*.pem
 
-# dotenv environment variable files
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
 .env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
 
 # caches
 .eslintcache
 .cache
-*.tsbuildinfo
 
-# IntelliJ based IDEs
+# logs
+logs
+*.log
+
+# IDEs
 .idea
+.vscode
 
-# Finder (MacOS) folder config
+# MacOS
 .DS_Store

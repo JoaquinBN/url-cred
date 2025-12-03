@@ -1,20 +1,20 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { CheckCircle, XCircle, AlertCircle, ExternalLink, Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 interface CompactVerificationResultProps {
   result: any;
 }
 
 export function CompactVerificationResult({ result }: CompactVerificationResultProps) {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleClick = () => {
     // Navigate to verifications page with URL search to potentially expand this item
     const searchParams = new URLSearchParams();
     searchParams.set('url', result.url);
-    navigate(`/verifications?${searchParams.toString()}`);
+    router.push(`/verifications?${searchParams.toString()}`);
   };
   const getStatusIcon = () => {
     if (result.is_accessible) {
@@ -55,9 +55,9 @@ export function CompactVerificationResult({ result }: CompactVerificationResultP
 
   const getSuccessAnswer = () => {
     if (result.is_accessible && result.concise_answer &&
-        result.concise_answer !== 'Error' &&
-        result.concise_answer !== 'Not found' &&
-        result.content_found) {
+      result.concise_answer !== 'Error' &&
+      result.concise_answer !== 'Not found' &&
+      result.content_found) {
       return result.concise_answer;
     }
     return null;
@@ -72,7 +72,7 @@ export function CompactVerificationResult({ result }: CompactVerificationResultP
   };
 
   return (
-    <Card className={cn("hover:shadow-md transition-all duration-200 border-l-4 cursor-pointer", getStatusBg())} onClick={handleClick}>
+    <Card className={cn("hover:shadow-md transition-all duration-200 border-l-4 cursor-pointer rounded-xl mx-2 overflow-hidden", getStatusBg())} onClick={handleClick}>
       <CardContent className="p-3">
         {/* Main line: Status • Domain • Answer • Time */}
         <div className="flex items-center gap-3">

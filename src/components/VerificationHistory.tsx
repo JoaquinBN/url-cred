@@ -54,7 +54,7 @@ export function VerificationHistory({ refreshTrigger }: VerificationHistoryProps
 
   // Refresh verifications when refreshTrigger changes
   useEffect(() => {
-    if (refreshTrigger > 0) {
+    if (refreshTrigger && refreshTrigger > 0) {
       loadVerifications();
     }
   }, [refreshTrigger]);
@@ -156,12 +156,12 @@ export function VerificationHistory({ refreshTrigger }: VerificationHistoryProps
                 size="sm"
                 onClick={() => setFilter(filter === 'all' ? 'accessible' :
                   filter === 'accessible' ? 'inaccessible' :
-                  filter === 'inaccessible' ? 'no-content' : 'all')}
+                    filter === 'inaccessible' ? 'no-content' : 'all')}
               >
                 <Filter className="h-4 w-4 mr-2" />
                 {filter === 'all' ? 'All' :
-                 filter === 'accessible' ? 'Accessible' :
-                 filter === 'inaccessible' ? 'Web Error' : 'No Content'}
+                  filter === 'accessible' ? 'Accessible' :
+                    filter === 'inaccessible' ? 'Web Error' : 'No Content'}
               </Button>
             )}
             <Button
