@@ -1,4 +1,4 @@
-# WebCred
+# Intelligent Crawler
 
 URL verification interface for GenLayer smart contracts. Check if URLs are accessible, stable, and ready for use by intelligent oracles.
 

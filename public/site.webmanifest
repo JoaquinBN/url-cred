@@ -1,5 +1,5 @@
 {
-  "name": "WebCred",
+  "name": "Intelligent Crawler",
   "short_name": "URL Verifier for Intelligent Oracles",
   "description": "Check if a URL is accessible, stable, and ready to be used by GenLayer Intelligent Oracles.",
   "start_url": "/",

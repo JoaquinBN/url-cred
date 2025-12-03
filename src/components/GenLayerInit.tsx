@@ -28,7 +28,7 @@ export function GenLayerInit({ children }: { children: React.ReactNode }) {
             <div className="min-h-screen bg-background flex items-center justify-center">
                 <div className="text-center">
                     <div className="mb-6">
-                        <h1 className="text-xl font-bold mb-2">WebCred</h1>
+                        <h1 className="text-xl font-bold mb-2">Intelligent Crawler</h1>
                         <p className="text-sm text-muted-foreground">Powered by GenLayer</p>
                     </div>
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>

@@ -59,19 +59,19 @@ export default function HomePage() {
     const isReady = genLayerService.isInitialized() && genLayerService.isContractConfigured();
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
             {/* Header */}
-            <div className="text-center">
-                <h1 className="text-3xl font-bold tracking-tight mb-3">
+            <div className="text-center px-4 md:px-0">
+                <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">
                     URL Verifier for Intelligent Oracles
                 </h1>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
                     Check if a URL is accessible, stable, and ready to be used by GenLayer Intelligent Oracles.
                 </p>
             </div>
 
             {/* Main Content Grid */}
-            <div className="grid gap-8 lg:grid-cols-2">
+            <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
                 {/* Left Column - Form */}
                 <div>
                     <URLVerificationForm onVerificationComplete={handleVerificationComplete} />
