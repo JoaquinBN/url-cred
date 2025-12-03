@@ -86,7 +86,7 @@ export function URLVerificationForm({ onVerificationComplete }: URLVerificationF
   const isReady = genLayerService.isInitialized() && genLayerService.isContractConfigured();
 
   return (
-    <Card>
+    <Card className="w-full max-w-full">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           URL Verification

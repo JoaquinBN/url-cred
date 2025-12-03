@@ -82,66 +82,74 @@ export function UltraCompactRow({ result, isExpanded, onToggle, searchQuery }: U
   return (
     <div
       className={cn(
-        "border-l-4 transition-all duration-200 cursor-pointer hover:bg-gray-50",
+        "border-l-4 transition-all duration-200 cursor-pointer hover:bg-gray-50 w-full",
         getStatusColor(),
         isExpanded && "bg-blue-50"
       )}
       onClick={onToggle}
-      style={{width: '100%'}}
     >
-      <div className="px-4 py-2" style={{width: '100%'}}>
+      <div className="px-2 sm:px-4 py-2 w-full">
         {/* Main row: Status • Domain • Answer • Time */}
-        <div className="flex items-center gap-3 text-sm" style={{width: '100%', minWidth: 0}}>
-          {getStatusIcon()}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-sm w-full min-w-0">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            {getStatusIcon()}
 
-          {/* Domain */}
-          <div className="flex items-center gap-1 flex-shrink-0">
-            <a
-              href={result.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium hover:underline"
-              onClick={(e) => e.stopPropagation()}
-              title={`Visit ${result.url}`}
-            >
-              {searchQuery ? highlightText(getHostname(), searchQuery) : getHostname()}
-            </a>
-            <ExternalLink className="h-3 w-3 text-muted-foreground opacity-60" />
+            {/* Domain */}
+            <div className="flex items-center gap-1 flex-shrink-0 min-w-0">
+              <a
+                href={result.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium hover:underline truncate"
+                onClick={(e) => e.stopPropagation()}
+                title={`Visit ${result.url}`}
+              >
+                {searchQuery ? highlightText(getHostname(), searchQuery) : getHostname()}
+              </a>
+              <ExternalLink className="h-3 w-3 text-muted-foreground opacity-60 flex-shrink-0" />
+            </div>
+
+            {/* Time - mobile */}
+            <span className="text-xs text-muted-foreground font-mono sm:hidden ml-auto">
+              {formatTime(result.timestamp)}
+            </span>
           </div>
 
-          {/* Bullet separator */}
-          <span className="text-muted-foreground">•</span>
+          <div className="flex items-center gap-2 flex-1 min-w-0">
+            {/* Bullet separator */}
+            <span className="text-muted-foreground hidden sm:inline">•</span>
 
-          {/* Answer or Status */}
-          <div className="flex-1 min-w-0">
-            {getSuccessAnswer() ? (
-              <span className="font-medium text-blue-700 truncate block">
-                {searchQuery ? highlightText(getSuccessAnswer()!, searchQuery) : getSuccessAnswer()}
-              </span>
-            ) : (
-              <span className={cn(
-                "text-xs font-medium",
-                result.is_accessible ?
-                  (result.query && !result.content_found ? "text-yellow-700" : "text-green-700") :
-                  "text-red-700"
-              )}>
-                {result.is_accessible ?
-                  (result.query && !result.content_found ? "No content found" : "Accessible") :
-                  "Error"
-                }
-              </span>
-            )}
+            {/* Answer or Status */}
+            <div className="flex-1 min-w-0">
+              {getSuccessAnswer() ? (
+                <span className="font-medium text-blue-700 truncate block">
+                  {searchQuery ? highlightText(getSuccessAnswer()!, searchQuery) : getSuccessAnswer()}
+                </span>
+              ) : (
+                <span className={cn(
+                  "text-xs font-medium",
+                  result.is_accessible ?
+                    (result.query && !result.content_found ? "text-yellow-700" : "text-green-700") :
+                    "text-red-700"
+                )}>
+                  {result.is_accessible ?
+                    (result.query && !result.content_found ? "No content found" : "Accessible") :
+                    "Error"
+                  }
+                </span>
+              )}
+            </div>
+
+            {/* Time - desktop */}
+            <span className="text-xs text-muted-foreground font-mono hidden sm:inline">
+              {formatTime(result.timestamp)}
+            </span>
           </div>
-
-          {/* Time */}
-          <span className="text-xs text-muted-foreground font-mono">
-            {formatTime(result.timestamp)}
-          </span>
         </div>
 
         {/* Query row (if exists) */}
         {result.query && (
-          <div className="mt-1 ml-7 flex items-center gap-2 text-xs text-muted-foreground">
+          <div className="mt-1 ml-0 sm:ml-7 flex items-center gap-2 text-xs text-muted-foreground">
             <Search className="h-3 w-3" />
             <span className="italic truncate">
               {searchQuery ? highlightText(result.query, searchQuery) : result.query}
@@ -151,7 +159,7 @@ export function UltraCompactRow({ result, isExpanded, onToggle, searchQuery }: U
 
         {/* Error message (if exists and not expanded) */}
         {!result.is_accessible && result.error_message && !isExpanded && (
-          <div className="mt-1 ml-7 text-xs text-red-600 truncate">
+          <div className="mt-1 ml-0 sm:ml-7 text-xs text-red-600 truncate">
             {result.error_message}
           </div>
         )}

@@ -72,29 +72,30 @@ export function CompactVerificationResult({ result }: CompactVerificationResultP
   };
 
   return (
-    <Card className={cn("hover:shadow-md transition-all duration-200 border-l-4 cursor-pointer rounded-xl mx-2 overflow-hidden", getStatusBg())} onClick={handleClick}>
-      <CardContent className="p-3">
-        {/* Main line: Status • Domain • Answer • Time */}
-        <div className="flex items-center gap-3">
-          {getStatusIcon()}
-
-          {/* Domain */}
-          <div className="flex items-center gap-1 flex-shrink-0">
-            <span className="font-medium text-sm">{getHostname()}</span>
-            <ExternalLink className="h-3 w-3 text-muted-foreground opacity-60" />
+    <Card className={cn("hover:shadow-md transition-all duration-200 border-l-4 cursor-pointer rounded-xl overflow-hidden w-full max-w-full", getStatusBg())} onClick={handleClick}>
+      <CardContent className="p-3 w-full min-w-0 overflow-hidden">
+        {/* Simplified layout - always stacked on mobile, side-by-side on desktop */}
+        <div className="space-y-2">
+          {/* Main row */}
+          <div className="flex items-center gap-2 w-full min-w-0">
+            {getStatusIcon()}
+            <div className="flex items-center gap-1 min-w-0 flex-1">
+              <span className="font-medium text-sm truncate max-w-[150px] sm:max-w-none">{getHostname()}</span>
+              <ExternalLink className="h-3 w-3 text-muted-foreground opacity-60 flex-shrink-0" />
+            </div>
+            <span className="text-xs text-muted-foreground font-mono flex-shrink-0">
+              {formatTime(result.timestamp)}
+            </span>
           </div>
 
-          {/* Separator */}
-          <span className="text-muted-foreground text-xs">•</span>
-
-          {/* Answer or Status */}
-          <div className="flex-1 min-w-0">
+          {/* Answer row */}
+          <div className="w-full min-w-0 pl-6">
             {getSuccessAnswer() ? (
-              <span className="text-sm font-medium text-blue-700 truncate block">
+              <div className="text-sm font-medium text-blue-700 truncate">
                 {getSuccessAnswer()}
-              </span>
+              </div>
             ) : (
-              <span className={cn(
+              <div className={cn(
                 "text-xs font-medium",
                 result.is_accessible ?
                   (result.query && !result.content_found ? "text-yellow-700" : "text-green-700") :
@@ -104,23 +105,18 @@ export function CompactVerificationResult({ result }: CompactVerificationResultP
                   (result.query && !result.content_found ? "No content" : "Accessible") :
                   "Error"
                 }
-              </span>
+              </div>
             )}
           </div>
 
-          {/* Time */}
-          <span className="text-xs text-muted-foreground font-mono">
-            {formatTime(result.timestamp)}
-          </span>
+          {/* Query row */}
+          {result.query && (
+            <div className="flex items-center gap-2 text-xs text-muted-foreground pl-6 w-full min-w-0">
+              <Search className="h-3 w-3 flex-shrink-0" />
+              <span className="italic truncate">{result.query}</span>
+            </div>
+          )}
         </div>
-
-        {/* Query line (if exists) */}
-        {result.query && (
-          <div className="mt-2 ml-7 flex items-center gap-2 text-xs text-muted-foreground">
-            <Search className="h-3 w-3" />
-            <span className="italic truncate">{result.query}</span>
-          </div>
-        )}
       </CardContent>
     </Card>
   );

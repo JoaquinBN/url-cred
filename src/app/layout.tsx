@@ -27,7 +27,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${inter.variable} font-sans antialiased`}>
                 <GenLayerInit>
-                    <div className="min-h-screen bg-background text-foreground">
+                    <div className="bg-background text-foreground overflow-x-hidden">
                         <header className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50">
                             <div className="w-full">
                                 <div className="flex items-center justify-between py-3 md:py-4 px-4 md:pl-6 md:pr-4">
@@ -54,8 +54,8 @@ export default function RootLayout({
                         </header>
 
                         {/* Main Content */}
-                        <main className="pt-16 md:pt-20">
-                            <div className="container mx-auto p-4 md:p-8">
+                        <main className="pt-16 md:pt-20 min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)]">
+                            <div className="container mx-auto px-4 py-4 md:p-8">
                                 <div className="max-w-6xl mx-auto">
                                     {children}
                                 </div>

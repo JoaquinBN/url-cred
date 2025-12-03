@@ -73,39 +73,40 @@ export default function HomePage() {
             {/* Main Content Grid */}
             <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
                 {/* Left Column - Form */}
-                <div>
+                <div className="w-full min-w-0">
                     <URLVerificationForm onVerificationComplete={handleVerificationComplete} />
                 </div>
 
                 {/* Right Column - Recent Verifications */}
-                <div>
-                        <Card>
-                            <CardHeader>
-                                <CardTitle className="flex items-center justify-between">
-                                    <div className="flex items-center gap-2">
-                                        <History className="h-5 w-5" />
-                                        Recent Verifications
+                <div className="w-full min-w-0">
+                        <Card className="w-full max-w-full overflow-hidden">
+                            <CardHeader className="w-full min-w-0">
+                                <CardTitle className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 w-full min-w-0">
+                                    <div className="flex items-center gap-2 min-w-0">
+                                        <History className="h-5 w-5 flex-shrink-0" />
+                                        <span className="truncate">Recent Verifications</span>
                                     </div>
-                                    <div className="flex items-center gap-2">
+                                    <div className="flex items-center gap-2 flex-shrink-0">
                                         <Button
                                             variant="outline"
                                             size="sm"
                                             onClick={loadRecentVerifications}
                                             disabled={isLoading}
+                                            className="text-xs"
                                         >
-                                            <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+                                            <RefreshCw className={`h-3 w-3 mr-1 ${isLoading ? 'animate-spin' : ''}`} />
                                             Refresh
                                         </Button>
-                                        <Button asChild variant="outline" size="sm">
+                                        <Button asChild variant="outline" size="sm" className="text-xs">
                                             <Link href="/verifications">
                                                 View All
-                                                <ArrowRight className="h-4 w-4 ml-2" />
+                                                <ArrowRight className="h-3 w-3 ml-1" />
                                             </Link>
                                         </Button>
                                     </div>
                                 </CardTitle>
                             </CardHeader>
-                            <CardContent>
+                            <CardContent className="w-full min-w-0 overflow-hidden">
                                 {!isReady ? (
                                     <div className="text-center py-8 text-muted-foreground">
                                         <AlertCircle className="h-8 w-8 mx-auto mb-3 opacity-50" />
@@ -113,7 +114,7 @@ export default function HomePage() {
                                     </div>
                                 ) : error ? (
                                     <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-                                        <p className="text-sm text-red-600">{error}</p>
+                                        <p className="text-sm text-red-600 break-words">{error}</p>
                                     </div>
                                 ) : recentVerifications.length === 0 && !isLoading ? (
                                     <div className="text-center py-8 text-muted-foreground">
@@ -122,7 +123,7 @@ export default function HomePage() {
                                         <p className="text-sm">Verify a URL to see results here.</p>
                                     </div>
                                 ) : (
-                                    <div className="space-y-3">
+                                    <div className="space-y-3 w-full min-w-0">
                                         {recentVerifications.map((result, index) => (
                                             <CompactVerificationResult
                                                 key={`${result.url}-${result.timestamp}-${index}`}
